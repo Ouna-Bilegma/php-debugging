@@ -6,9 +6,10 @@
 // sometimes, even your IDE can tell you what's wrong
 echo "Exercise 1 starts here:";
 
-function new_exercise($x) {
-    $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";  
-    echo $block;   
+function new_exercise($x)
+{
+  $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
+  echo $block;
 }
 
 
@@ -36,8 +37,8 @@ new_exercise(4);
 // The print_r($week) should give:  Array ( [0] => mon [1] => tues [2] => wednes [3] => thurs [4] => fri [5] => satur [6] => sun )
 // Look up whats going wrong with this code, and then fix it, with ONE CHARACTER!
 
-foreach($week as $day) {
-    $day = substr($day, 0, -3);
+foreach ($week as $day) {
+  $day = substr($day, 0, -3);
 }
 
 print_r($week);
@@ -49,8 +50,8 @@ new_exercise(5);
 // Fix the code so the for loop only pushes a-z in the array
 
 $arr = [];
-for ($letter = 'a'; $letter !='aa'; $letter++) {
-    array_push($arr, $letter);
+for ($letter = 'a'; $letter != 'aa'; $letter++) {
+  array_push($arr, $letter);
 }
 
 print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical array
@@ -85,8 +86,9 @@ function randomHeroName($i)
 
 
 new_exercise(7);
-function copyright(int $year) {
-    return "&copy; $year BeCode";
+function copyright(int $year)
+{
+  return "&copy; $year BeCode";
 }
 //print the copyright
 echo copyright((int)date('Y'));
@@ -97,60 +99,55 @@ echo copyright((int)date('Y'));
 
 
 new_exercise(8);
-function login(string $email, string $password) {
-    if($email == 'john@example.be' || $password == 'pocahontas') {
-        return 'Welcome John';
-        return ' Smith';
-    }
-    return 'No access';
+function login(string $email, string $password)
+{
+  if ($email == 'john@example.be' || $password == 'pocahontas') {
+    return 'Welcome John';
+    return ' Smith';
+  }
+  return 'No access';
 }
-/* do not change any code below */
-//should greet the user with his full name (John Smith)
-echo login('john@example.be', 'pocahontas');
-//Should say: no access
-echo login('john@example.be', 'dfgidfgdfg');
-//Should say: no access
-echo login('wrong@example', 'wrong');
-/* You can change code again */
+new_exercise(9);
+function isLinkValid(string $link)
+{
+  $unacceptables = array('https:', '.doc', '.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
 
-// new_exercise(9);
-// function isLinkValid(string $link) {
-//     $unacceptables = array('https:','.doc','.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
-
-//     foreach ($unacceptables as $unacceptable) {
-//         if (strpos($link, $unacceptable) == true) {
-//             return 'Unacceptable Found<br />';
-//         }
-//     }
-//     return 'Acceptable<br />';
-// }
-// //invalid link
-// isLinkValid('http://www.google.com/hack.pdf');
-// //invalid link
-// isLinkValid('https://google.com');
-// //VALID link
-// isLinkValid('http://google.com');
-// //VALID link
-// isLinkValid('http://google.com/test.txt');
+  foreach ($unacceptables as $unacceptable) {
+    if (strpos($link, $unacceptable) !== false) {
+      return 'Unacceptable Found<br />';
+    }
+  }
+  return 'Acceptable<br />';
+}
+//invalid link
+echo isLinkValid('http://www.google.com/hack.pdf');
+//invalid link
+echo isLinkValid('https://google.com');
+//VALID link
+echo isLinkValid('http://google.com');
+//VALID link
+echo isLinkValid('http://google.com/test.txt');
 
 
-// new_exercise(10);
 
-// //Filter the array $areTheseFruits to only contain valid fruits
-// //do not change the arrays itself
-// $areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
-// $validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
-// //from here on you can change the code
-// for($i=0; $i <= count($areTheseFruits); $i++) {
-//     if(!in_array($areTheseFruits[$i], $validFruits)) {
-//         unset($areTheseFruits[$i]);
-//     }
-// }
-// var_dump($areTheseFruits);//do not change this
 
+new_exercise(10);
+
+//Filter the array $areTheseFruits to only contain valid fruits
+//do not change the arrays itself
+$areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
+$validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
+//from here on you can change the code
+$len = count($areTheseFruits); //change add$len Variable with the size of array $areTheseFruits before the for starts
+for ($i = 0; $i <= $len; $i++) {
+  if (!in_array($areTheseFruits[$i], $validFruits)) {
+    unset($areTheseFruits[$i]);
+  }
+}
+var_dump($areTheseFruits); //do not change this
 
 // // Bonus round
 // // Below are 5 characters (the space included)
 // // Find out why the substring with limit 10 still shortens the string, and what might be a solution (not easy)
-// $str = "안녕 세상";
-// echo substr($str, 0, 10);
+$str = "안녕 세상";
+echo mb_substr($str, 0, 10);
